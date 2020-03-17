@@ -14,6 +14,8 @@ enum Gender { male, female }
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
   int height = 180;
+  int weight = 50;
+  int age = 20;
 //  Color maleCardColour = inactiveCardColor;
 //  Color femaleCardColor = inactiveCardColor;
 //
@@ -134,8 +136,52 @@ class _InputPageState extends State<InputPage> {
           Expanded(
             child: Row(
               children: <Widget>[
-                Expanded(child: ReusableCard(colour: kActiveCardColor)),
-                Expanded(child: ReusableCard(colour: kActiveCardColor)),
+                Expanded(
+                  child: ReusableCard(
+                    colour: kActiveCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          'WEIGHT',
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kHeightStyle,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            FloatingActionButton(
+                              onPressed: null,
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                              backgroundColor: Color(0xFF4C4F5E),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            FloatingActionButton(
+                              child: Icon(
+                                Icons.remove,
+                                color: Colors.white,
+                              ),
+                              backgroundColor: Color(0xFF4C4F5E),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: ReusableCard(
+                    colour: kActiveCardColor,
+                  ),
+                ),
               ],
             ),
           ),
