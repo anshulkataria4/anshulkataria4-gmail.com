@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/components/bottom_button.dart';
 import 'package:bmi_calculator/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +15,8 @@ class Result extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Container(
-              padding: EdgeInsets.only(left: 20),
-              alignment: Alignment.topLeft,
+              padding: EdgeInsets.all(20),
+              alignment: Alignment.bottomLeft,
               child: Text(
                 'YOUR RESULT',
                 style: kLargeButtonTextStyle.copyWith(fontSize: 40),
@@ -26,7 +27,7 @@ class Result extends StatelessWidget {
             flex: 5,
             child: Container(
               alignment: Alignment.topCenter,
-              margin: EdgeInsets.only(left: 20,right: 20),
+              margin: EdgeInsets.only(left: 20, right: 20),
               padding: EdgeInsets.only(top: 40),
               width: double.infinity,
               decoration: BoxDecoration(
@@ -51,30 +52,19 @@ class Result extends StatelessWidget {
                   ),
                   Text(
                     'Your BMI Result is quite not good, you should exercise a bit more!! Contact ASP at +91-8802055318 for more info.',
-                    style: kLabelTextStyle.copyWith(color: Colors.white,fontSize: 30),
+                    style: kLabelTextStyle.copyWith(
+                        color: Colors.white, fontSize: 30),
                     textAlign: TextAlign.center,
                   )
                 ],
               ),
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Container(
-              alignment: Alignment.center,
-              height: kBottomContainerHeight,
-              width: double.infinity,
-              margin: EdgeInsets.only(top: 15),
-              padding: EdgeInsets.only(bottom: 20),
-              color: kBottomContainerColor,
-              child: Text(
-                'RE-CALCULATE',
-                style: kLargeButtonTextStyle,
-              ),
-            ),
-          )
+          BottomButton(
+              buttonTitle: 'RE-CALCULATE',
+              onTap: () {
+                Navigator.pop(context);
+              })
         ],
       ),
     );
