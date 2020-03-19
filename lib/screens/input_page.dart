@@ -1,8 +1,11 @@
-import 'package:bmi_calculator/reusable_card.dart';
+import 'package:bmi_calculator/screens/results_page.dart';
+import 'package:bmi_calculator/components/reusable_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'icon_tile.dart';
-import 'constants.dart';
+import '../components/bottom_button.dart';
+import '../components/icon_tile.dart';
+import '../constants.dart';
+import '../components/round_icon_button.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -197,7 +200,7 @@ class _InputPageState extends State<InputPage> {
                           children: <Widget>[
                             RoundIconButton(
                               icon: FontAwesomeIcons.minus,
-                              onPressedFunction: (){
+                              onPressedFunction: () {
                                 setState(() {
                                   age--;
                                 });
@@ -208,7 +211,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             RoundIconButton(
                               icon: FontAwesomeIcons.plus,
-                              onPressedFunction: (){
+                              onPressedFunction: () {
                                 setState(() {
                                   age++;
                                 });
@@ -223,11 +226,13 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            color: kBottomContainerColor,
-            margin: EdgeInsets.only(top: 10),
-            height: kBottomContainerHeight,
-            width: double.infinity,
+          BottomButton(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return Result();
+              }));
+            },
+            buttonTitle: 'CALCULATE',
           )
         ],
       ),
@@ -235,23 +240,3 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({this.icon, this.onPressedFunction});
-  final IconData icon;
-  final Function onPressedFunction;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(icon),
-      onPressed: onPressedFunction,
-      elevation: 2.0,
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
-    );
-  }
-}
