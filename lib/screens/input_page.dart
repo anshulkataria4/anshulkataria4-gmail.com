@@ -6,6 +6,7 @@ import '../components/bottom_button.dart';
 import '../components/icon_tile.dart';
 import '../constants.dart';
 import '../components/round_icon_button.dart';
+import 'package:bmi_calculator/calculator_brain.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -228,8 +229,14 @@ class _InputPageState extends State<InputPage> {
           ),
           BottomButton(
             onTap: () {
+              CalculatorBrain calc =
+                  CalculatorBrain(height: height, weight: weight);
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return Result();
+                return Result(
+                  bmiResult: calc.calculateBMI(),
+                  resultText: calc.getResult(),
+                  advice: calc.getInterpretation(),
+                );
               }));
             },
             buttonTitle: 'CALCULATE',
@@ -239,4 +246,3 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
-

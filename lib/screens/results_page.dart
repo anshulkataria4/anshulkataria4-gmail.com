@@ -3,6 +3,13 @@ import 'package:bmi_calculator/constants.dart';
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
+
+  Result({@required this.bmiResult, @required this.resultText, @required this.advice});
+
+  final String bmiResult;
+  final String resultText;
+  final String advice;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,23 +44,23 @@ class Result extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Text(
-                    'Overweight',
+                    resultText.toUpperCase(),
                     style: kResultTextStyle.copyWith(fontSize: 30),
                   ),
                   SizedBox(
                     height: 60,
                   ),
                   Text(
-                    '26.9',
+                    bmiResult,
                     style: kHeightStyle.copyWith(fontSize: 100),
                   ),
                   SizedBox(
                     height: 60,
                   ),
                   Text(
-                    'Your BMI Result is quite not good, you should exercise a bit more!! Contact ASP at +91-8802055318 for more info.',
+                    advice,
                     style: kLabelTextStyle.copyWith(
-                        color: Colors.white, fontSize: 30),
+                        color: Colors.white, fontSize: 25),
                     textAlign: TextAlign.center,
                   )
                 ],
